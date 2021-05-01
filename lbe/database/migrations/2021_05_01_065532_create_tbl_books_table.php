@@ -19,6 +19,7 @@ class CreateTblBooksTable extends Migration
             $table->string('book_author');
             $table->string('book_isbn');
             $table->Text('book_info');
+            $table->integer('book_qty');
             $table->timestamps();
         });
     }

@@ -13,5 +13,6 @@ $factory->define(tbl_books::class, function (Faker $faker) {
         'book_author' => Str::random(10),
         'book_isbn' => Str::random(10),
         'book_info' => Str::random(10),
+        'book_qty' => rand(0,10)
     ];
 });

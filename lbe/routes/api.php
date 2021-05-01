@@ -26,3 +26,7 @@ Route::any('test', function (Request $request) {
 
 
 Route::any('get-all-books', "TblBooksController@getAllRecords");
+Route::any('get-available-books', "TblBooksController@getAvailableBooks");
+Route::any('insert-new-book', "TblBooksController@insertNew");
+Route::any('delete-all-books', "TblBooksController@deleteAll");
+Route::any('update-book-title', "TblBooksController@updateBookTitle");
