@@ -23,3 +23,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::any('test', function (Request $request) {
     return 'test endpoint here.';
 });
+
+
+Route::any('get-all-books', "TblBooksController@getAllRecords");
