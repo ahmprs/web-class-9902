@@ -30,3 +30,21 @@ Route::any('get-available-books', "TblBooksController@getAvailableBooks");
 Route::any('insert-new-book', "TblBooksController@insertNew");
 Route::any('delete-all-books', "TblBooksController@deleteAll");
 Route::any('update-book-title', "TblBooksController@updateBookTitle");
+
+
+Route::any('get-all-students', 'TblStudentsController@getAllStudents');
+Route::any('delete-student', 'TblStudentsController@deleteStudents');
+Route::any('update-student', 'TblStudentsController@updateStdName');
+
+
+Route::any('calc-sum', function (Request $req) {
+    $x = $req->input('x');
+    if ($x == null) return Response()->json(['err' => 'missing x']);
+
+    $y = $req->input('y');
+    if ($y == null) return Response()->json(['err' => 'missing y']);
+
+    $z = (int)$x + (int)$y;
+
+    return Response()->json(['resp' => $z]);
+});
