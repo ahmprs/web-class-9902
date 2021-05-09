@@ -1,0 +1,19 @@
+td {
+    padding: 5px 10px;
+    box-shadow: 1px gray;
+    background-color: dimgray;
+    color: whitesmoke;
+    border-radius: 3px;
+}
+
+thead {
+    background-color: #000000ee;
+    color: whitesmoke;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+thead>tr>th {
+    padding: 5px 10px;
+    color: #ffffffee;
+    border-radius: 3px;
+}

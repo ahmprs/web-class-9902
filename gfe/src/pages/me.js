@@ -3,9 +3,11 @@ import * as React from "react";
 // npm i jquery
 import $ from "jquery";
 
+import "../styles/main_styles.css";
+
 function Me() {
   const [nbr, setNbr] = React.useState(5);
-  const [tableInfo, setTableInfo] = React.useState("UNSET");
+  const [tableInfo, setTableInfo] = React.useState(null);
 
   function txtChange(e) {
     setNbr(e.target.value);
@@ -26,16 +28,14 @@ function Me() {
 
         let inf = d.res.map((x) => {
           return (
-            <>
-              <tr>
+              <tr key={x.book_id}>
                 <td>{x.book_id}</td>
-                <td>{x.book_author}</td>
+                <td className="test">{x.book_author}</td>
                 <td>{x.book_title}</td>
                 <td>{x.book_info}</td>
                 <td>{x.book_isbn}</td>
                 <td>{x.book_qty}</td>
               </tr>
-            </>
           );
         });
         setTableInfo(inf);
@@ -52,16 +52,18 @@ function Me() {
       <hr />
       <button onClick={fnFetchBooks}>Fetch books</button>
       <br />
-      <table>
-        <tr>
-          <th>Book ID</th>
-          <th>Author</th>
-          <th>Title</th>
-          <th>Info</th>
-          <th>ISBN</th>
-          <th>Quantity</th>
-        </tr>
-        {tableInfo}
+      <table className="tbl">
+        <thead>
+          <tr>
+            <th>Book ID</th>
+            <th>Author</th>
+            <th>Title</th>
+            <th>Info</th>
+            <th>ISBN</th>
+            <th>Quantity</th>
+          </tr>
+        </thead>
+        <tbody>{tableInfo}</tbody>
       </table>
     </>
   );
