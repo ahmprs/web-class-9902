@@ -1,30 +1,45 @@
 import * as React from "react";
 
 // npm i jquery
-import $ from 'jquery';
+import $ from "jquery";
 
 function Me() {
   const [nbr, setNbr] = React.useState(5);
-  const [title, setTitle] = React.useState("");
-  
+  const [tableInfo, setTableInfo] = React.useState("UNSET");
+
   function txtChange(e) {
     setNbr(e.target.value);
   }
 
-  function btnInc(){
+  function btnInc() {
     setNbr(nbr + 5);
   }
 
-  function fnFetchBooks(){
+  function fnFetchBooks() {
     //   debugger;
     $.post(
-        'http://localhost/web-class-9902/lbe/public/api/get-all-books',
-        {},
-        function(d,s){
-            debugger;
-            console.table(d.res);
-            //  setTitle (d.res[0].book_title);
-        }
+      "http://localhost/web-class-9902/lbe/public/api/get-all-books",
+      {},
+      function (d, s) {
+        // console.log(d.res);
+        // debugger;
+
+        let inf = d.res.map((x) => {
+          return (
+            <>
+              <tr>
+                <td>{x.book_id}</td>
+                <td>{x.book_author}</td>
+                <td>{x.book_title}</td>
+                <td>{x.book_info}</td>
+                <td>{x.book_isbn}</td>
+                <td>{x.book_qty}</td>
+              </tr>
+            </>
+          );
+        });
+        setTableInfo(inf);
+      }
     );
   }
 
@@ -37,7 +52,17 @@ function Me() {
       <hr />
       <button onClick={fnFetchBooks}>Fetch books</button>
       <br />
-      <span>{title}</span>
+      <table>
+        <tr>
+          <th>Book ID</th>
+          <th>Author</th>
+          <th>Title</th>
+          <th>Info</th>
+          <th>ISBN</th>
+          <th>Quantity</th>
+        </tr>
+        {tableInfo}
+      </table>
     </>
   );
 }
