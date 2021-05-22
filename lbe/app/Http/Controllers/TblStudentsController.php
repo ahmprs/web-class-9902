@@ -10,8 +10,8 @@ class TblStudentsController extends Controller
 {
     function getAllStudents()
     {
-        // $students = tbl_students::all();
-        $students = tbl_students::where('std_id', '<', 20)->get();
+        $students = tbl_students::all();
+        // $students = tbl_students::where('std_id', '<', 20)->get();
         return Response()->json(["res" => $students]);
     }
 

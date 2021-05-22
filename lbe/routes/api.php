@@ -1,5 +1,7 @@
 <?php
 
+use App\tbl_requsts;
+use Illuminate\Http\Client\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,7 +23,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::any('test', function (Request $request) {
-    return 'test endpoint here.';
+    return Response()->json([
+        "resp" => "this is my response"
+    ]);
 });
 
 
@@ -48,3 +52,8 @@ Route::any('calc-sum', function (Request $req) {
 
     return Response()->json(['resp' => $z]);
 });
+
+
+Route::any('get-all-requests', 'TblRequstsController@getAllRequests');
+Route::any('insert-new-request', 'TblRequstsController@insertNewRequest');
+Route::any('delete_records', 'TblRequstsController@deleteRecords');
